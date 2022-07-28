@@ -1,0 +1,188 @@
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url(./Fonts/SpaceGrotesk-Regular.ttf);
+}
+@font-face {
+  font-family: "Flecha L";
+  src: url(./Fonts/Flecha_L_Regular.ttf);
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: "SpaceGrotesk";
+  background-color: #e1ddd8;
+  /* background-color: #bcabbc; */
+}
+
+.grid-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 0.2fr 1fr 0.6fr 1fr 0.2fr;
+  grid-template-rows: 0.2fr 1fr 0.5fr 1fr 0.2fr;
+  /* 0.2fr = nav atau row pertama */
+  grid-template-areas:
+    "nav nav nav nav nav"
+    "work work work connect connect"
+    "about about logo connect connect"
+    "about about community community community"
+    "footer footer footer footer footer";
+}
+
+nav {
+  grid-area: nav;
+  border-bottom: 0.2rem solid black;
+}
+.sidebar {
+  grid-area: sidebar;
+  border-right: 0.2rem solid black;
+}
+.logo {
+  grid-area: logo;
+  border-bottom: 0.2rem solid black;
+  border-left: 0.2rem solid black;
+}
+.work {
+  grid-area: work;
+  border-bottom: 0.2rem solid black;
+}
+
+.connect {
+  grid-area: connect;
+  border-left: 0.2rem solid black;
+  border-bottom: 0.2rem solid black;
+}
+.about {
+  grid-area: about;
+}
+.community {
+  grid-area: community;
+  border-left: 0.2rem solid black;
+}
+
+footer {
+  grid-area: footer;
+  border-top: 0.2rem solid black;
+}
+
+/* Center */
+.sidebar .title {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+nav .title,
+.logo .title,
+.work .title,
+.connect .title,
+.connect .title,
+.about .title,
+.about .title,
+.community .title,
+footer .title {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* text */
+.work a,
+.connect a,
+.about a,
+.community a {
+  font-family: "Flecha L";
+}
+nav a,
+.logo a,
+.work a,
+.sidebar a,
+.connect a,
+.about a,
+.community a,
+footer a {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+  font-size: 70px;
+}
+
+nav a,
+footer a {
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.sidebar a {
+  font-size: 30px;
+}
+footer .title {
+  gap: 2rem;
+}
+/* Animate Underline Hover */
+.hover-underline {
+  display: block;
+  position: relative;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(158, 162, 147);
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+  -webkit-transition: transform 0.5s ease-out;
+  -moz-transition: transform 0.5s ease-out;
+  -ms-transition: transform 0.5s ease-out;
+  -o-transition: transform 0.5s ease-out;
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+@media only screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    /* grid-template-rows: 0.4fr 1.4fr 1.2fr 1.2fr 1.2fr 1.2fr 0.4fr; */
+    grid-template-rows: 200px 200px 200px 200px 200px;
+    grid-template-areas: "nav" "work" "about" "connect" "community" "footer";
+
+    overflow: auto;
+  }
+  .about {
+    border-bottom: 0.2rem solid black;
+  }
+  .logo,
+  .sidebar {
+    display: none;
+  }
+  .logo,
+  .connect,
+  .community {
+    border-left: 0;
+  }
+  nav a,
+  .logo a,
+  .work a,
+  .sidebar a,
+  .connect a,
+  .connect a,
+  .about a,
+  .about a,
+  .community a {
+    font-size: 25px;
+  }
+  footer a {
+    font-size: 20px;
+  }
+}
